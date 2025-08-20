@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Settings - Mental Health Tracker</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+  <header>
+    <h1>Mental Health Tracker</h1>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="checkin.html">Check-In</a></li>
+        <li><a href="trends.html">Trends</a></li>
+        <li><a href="suggestions.html">Suggestions</a></li>
+        <li><a href="resources.html">Resources</a></li>
+        <li><a href="settings.html">Settings</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <h2>Settings</h2>
+
+    <section style="margin-top: 1rem;">
+      <h3>Notification Preferences</h3>
+      <label>
+        <input type="checkbox" id="notifToggle" />
+        Enable daily check-in reminders (UI only)
+      </label>
+    </section>
+
+    <section style="margin-top: 2rem;">
+      <h3>Data Control</h3>
+      <button onclick="clearData()">🗑️ Clear All Check-In Data</button>
+      <p id="clearMsg" style="color: green; display: none; margin-top: 1rem;">✅ All data cleared!</p>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Mental Health Tracker for Students</p>
+  </footer>
+
+  <script>
+    function clearData() {
+      if (confirm("Are you sure you want to delete all your check-in data?")) {
+        localStorage.removeItem("checkIns");
+        document.getElementById("clearMsg").style.display = "block";
+      }
+    }
+
+    // Optionally store notification toggle setting (not functional)
+    const toggle = document.getElementById("notifToggle");
+    toggle.addEventListener("change", () => {
+      localStorage.setItem("notifications", toggle.checked ? "on" : "off");
+    });
+
+    // Load stored toggle state
+    window.onload = () => {
+      toggle.checked = localStorage.getItem("notifications") === "on";
+    };
+  </script>
+</body>
+</html>

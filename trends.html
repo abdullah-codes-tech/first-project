@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mood Trends - Mental Health Tracker</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+  <header>
+    <h1>Mental Health Tracker</h1>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="checkin.html">Check-In</a></li>
+        <li><a href="trends.html">Trends</a></li>
+        <li><a href="suggestions.html">Suggestions</a></li>
+        <li><a href="resources.html">Resources</a></li>
+        <li><a href="settings.html">Settings</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <h2>Your Mood History</h2>
+    <table id="trendsTable" border="1" style="width: 100%; margin-top: 1rem; border-collapse: collapse;">
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Mood</th>
+          <th>Stress Level</th>
+          <th>Tags</th>
+          <th>Journal</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Data will be inserted here by JavaScript -->
+      </tbody>
+    </table>
+    <p id="noDataMsg" style="margin-top: 1rem;">Loading your mood history...</p>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Mental Health Tracker for Students</p>
+  </footer>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const trendsTable = document.getElementById("trendsTable").querySelector("tbody");
+      const noDataMsg = document.getElementById("noDataMsg");
+      const checkIns = JSON.parse(localStorage.getItem("checkIns")) || [];
+
+      if (checkIns.length === 0) {
+        noDataMsg.textContent = "No check-ins recorded yet.";
+        trendsTable.parentElement.style.display = "none";
+      } else {
+        noDataMsg.style.display = "none";
+        checkIns.forEach(entry => {
+          const row = document.createElement("tr");
+
+          row.innerHTML = `
+            <td>${entry.date}</td>
+            <td>${entry.mood}</td>
+            <td>${entry.stress}</td>
+            <td>${entry.tags}</td>
+            <td>${entry.journal}</td>
+          `;
+          trendsTable.appendChild(row);
+        });
+      }
+    });
+  </script>
+</body>
+</html>

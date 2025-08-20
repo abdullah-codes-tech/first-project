@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Suggestions - Mental Health Tracker</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+  <header>
+    <h1>Mental Health Tracker</h1>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="checkin.html">Check-In</a></li>
+        <li><a href="trends.html">Trends</a></li>
+        <li><a href="suggestions.html">Suggestions</a></li>
+        <li><a href="resources.html">Resources</a></li>
+        <li><a href="settings.html">Settings</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <h2>Wellness Suggestions</h2>
+    <div id="suggestionBox" class="motivation" style="margin-top: 1rem;">
+      <p>Loading suggestions based on your latest check-in...</p>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Mental Health Tracker for Students</p>
+  </footer>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const suggestionBox = document.getElementById("suggestionBox");
+      const checkIns = JSON.parse(localStorage.getItem("checkIns")) || [];
+
+      if (checkIns.length === 0) {
+        suggestionBox.innerHTML = "<p>No mood data found. Please check in first.</p>";
+        return;
+      }
+
+      const latest = checkIns[checkIns.length - 1];
+      const mood = latest.mood;
+
+      let suggestion = "";
+
+      switch (mood) {
+        case "happy":
+          suggestion = "You're feeling good! Take time to share your positivity with a friend or do something creative today.";
+          break;
+        case "neutral":
+          suggestion = "Try a short walk, drink water, or write something you're grateful for.";
+          break;
+        case "sad":
+          suggestion = "Feeling down is okay. Try some deep breathing, listen to calming music, or reach out to someone you trust.";
+          break;
+        case "angry":
+          suggestion = "Let the frustration out through journaling or physical activity. Avoid reacting immediately—take a breath.";
+          break;
+        case "crying":
+          suggestion = "You may be overwhelmed. Be kind to yourself. Take a break, do a short meditation, or talk to someone if you're ready.";
+          break;
+        default:
+          suggestion = "Check in regularly to receive personalized tips!";
+      }
+
+      suggestionBox.innerHTML = `<p><strong>Based on your mood (${mood}):</strong> ${suggestion}</p>`;
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,165 @@
+/* Reset and base styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f3f6fa;
+  color: #333;
+  line-height: 1.6;
+}
+
+/* Header and nav */
+header {
+  background-color: #004c8c;
+  color: white;
+  padding: 1rem;
+  text-align: center;
+}
+
+header h1 {
+  margin-bottom: 0.5rem;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 0;
+}
+
+nav ul li {
+  margin: 0.5rem 1rem;
+}
+
+nav ul li a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+nav ul li a:hover {
+  text-decoration: underline;
+}
+
+/* Main content */
+main {
+  padding: 2rem;
+  max-width: 800px;
+  margin: auto;
+}
+
+.welcome {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.welcome h2 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.button {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.75rem 1.5rem;
+  background-color: #0085d1;
+  color: white;
+  text-decoration: none;
+  border-radius: 6px;
+  transition: background-color 0.3s;
+}
+
+.button:hover {
+  background-color: #005f9e;
+}
+
+/* Motivation section */
+.motivation {
+  text-align: center;
+  background-color: #dff0ff;
+  padding: 1.5rem;
+  border-radius: 10px;
+}
+
+.motivation blockquote {
+  font-style: italic;
+  color: #004c8c;
+  font-size: 1.1rem;
+}
+
+/* Footer */
+footer {
+  background-color: #004c8c;
+  color: white;
+  text-align: center;
+  padding: 1rem;
+  margin-top: 2rem;
+}
+
+/* Form inputs */
+input[type="range"],
+input[type="text"],
+textarea,
+select,
+button {
+  display: block;
+  width: 100%;
+  padding: 0.7rem;
+  margin-top: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+}
+
+button {
+  background-color: #0085d1;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #005f9e;
+}
+
+/* Emoji picker or mood buttons */
+.mood-options {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
+}
+
+.mood-option {
+  font-size: 2rem;
+  cursor: pointer;
+  padding: 0.5rem;
+  border: 2px solid transparent;
+  border-radius: 10px;
+  transition: transform 0.2s, border-color 0.2s;
+}
+
+.mood-option:hover {
+  transform: scale(1.2);
+  border-color: #0085d1;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  nav ul {
+    flex-direction: column;
+  }
+
+  .mood-options {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .mood-option {
+    margin-bottom: 0.5rem;
+  }
+}

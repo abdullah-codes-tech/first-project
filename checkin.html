@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Daily Check-In - Mental Health Tracker</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+  <header>
+    <h1>Mental Health Tracker</h1>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="checkin.html">Check-In</a></li>
+        <li><a href="trends.html">Trends</a></li>
+        <li><a href="suggestions.html">Suggestions</a></li>
+        <li><a href="resources.html">Resources</a></li>
+        <li><a href="settings.html">Settings</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <h2>Today's Check-In</h2>
+
+    <form id="checkinForm">
+      <label>Select your mood:</label>
+      <div class="mood-options">
+        <span class="mood-option" data-mood="happy">😄</span>
+        <span class="mood-option" data-mood="neutral">😐</span>
+        <span class="mood-option" data-mood="sad">😢</span>
+        <span class="mood-option" data-mood="angry">😡</span>
+        <span class="mood-option" data-mood="crying">😭</span>
+      </div>
+
+      <label for="stressLevel">Stress level (1 to 10):</label>
+      <input type="range" id="stressLevel" name="stressLevel" min="1" max="10" value="5"/>
+
+      <label for="tags">Activity tags (comma separated):</label>
+      <input type="text" id="tags" name="tags" placeholder="e.g. exam, social, sleep"/>
+
+      <label for="journal">Journal entry (optional):</label>
+      <textarea id="journal" name="journal" rows="5" placeholder="Write your thoughts..."></textarea>
+
+      <button type="submit">Submit Check-In</button>
+    </form>
+
+    <p id="successMsg" style="color: green; display: none; margin-top: 1rem;">✔️ Check-in saved!</p>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Mental Health Tracker for Students</p>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>
+// Temporary debug - remove this later
+console.log("Debug: checkinForm exists?", !!document.getElementById('checkinForm'));
+console.log("Debug: mood options count:", document.querySelectorAll('.mood-option').length);
+</script>
+</body>
+</html>
